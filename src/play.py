@@ -14,8 +14,9 @@ import os
 import random
 import re
 import sys
+import time
 
-from agents import GreedyAgent, RandomAgent, ThresholdAgent
+from agents import GreedyAgent, MCTSAgent, RandomAgent, ThresholdAgent
 from belief import p_true
 from engine import View, action_key, bucket_of
 from rules import DEFAULT_RULES, count_true, fmt_bid, is_valid_hand, legal_bids
@@ -92,8 +93,8 @@ def build_ai(level, params):
         return ThresholdAgent(p["tau_call"], p["tau_safe"], p["style"]), \
             "困难 · 训练实战参数"
     p = params.get("vs_rational", {"tau_call": 0.3, "tau_safe": 0.55, "style": "maxp"})
-    return ThresholdAgent(p["tau_call"], p["tau_safe"], p["style"]), \
-        "专家 · 理论收敛参数"
+    return MCTSAgent(rollouts=100, seed=random.randrange(10 ** 6)), \
+        "专家 · 蒙特卡洛推演"
 
 
 def parse_bid(text):
@@ -193,7 +194,11 @@ def roll_with_display(hands, struck, idx, who, rng):
     struck[idx] = True
 
 
-def play_one_hand(human, ai, first_is_human, rng):
+def play_one_hand(human, ai, first_is_human, rng, record=None):
+    def rec(**kw):
+        if record is not None:
+            record["steps"].append(kw)
+
     my_i, ai_i = (0, 1) if first_is_human else (1, 0)
     while True:
         hands, struck = [None, None], [False, False]
@@ -203,6 +208,9 @@ def play_one_hand(human, ai, first_is_human, rng):
             print(dim("  双方连续无效，重开一把"))
             continue
         break
+    if record is not None:
+        record["my_dice"] = list(hands[my_i])
+        record["ai_dice"] = list(hands[ai_i])
     if any(struck):
         loser = struck.index(True)
         winner_is_me = (loser == ai_i)
@@ -211,6 +219,7 @@ def play_one_hand(human, ai, first_is_human, rng):
         who = "对手" if loser == ai_i else "你"
         print(f"  {red(who)} 连续 3 次无效判负 → "
               f"{green('你赢') if winner_is_me else red('对手赢')}")
+        rec(who="system", act="strike", detail=who)
         return winner_is_me
 
     dice = hands
@@ -238,6 +247,10 @@ def play_one_hand(human, ai, first_is_human, rng):
         action = agent.choose(view)
         if action[0] == "quit":
             return None
+        rec(who="me" if me_turn else "ai",
+            act="open" if action[0] == "challenge" else "bid",
+            bid=list(action[1]) if action[0] == "bid" else list(view.prev),
+            one_bid_made=view.one_bid_made)
         if action[0] == "challenge":
             true = count_true(RULES, dice[0] + dice[1], prev, one_bid_made)
             winner_is_me = (me_turn != true)
@@ -293,13 +306,20 @@ def main():
     rng = random.Random()
     score = {"me": 0, "ai": 0, "n": 0}
     first_is_human = (first == "1")
-    print(f"\n{bold('开战')}  对手：{desc}")
+    os.makedirs("logs", exist_ok=True)
+    game_log_path = f"logs/games_{time.strftime('%Y%m%d_%H%M%S')}.jsonl"
+    print(f"\n{bold('开战')}  对手：{desc}  {dim(f'对局记录 → {game_log_path}')}")
     while True:
         score_line = f"你 {score['me']} : {score['ai']} 对手"
         print(f"\n{RULE_LINE}")
         print(f" 第 {score['n'] + 1} 把    {bold(score_line)}")
         print(RULE_LINE)
-        r = play_one_hand(human, ai, first_is_human, rng)
+        record = {"hand": score["n"] + 1, "difficulty": level,
+                  "first": "me" if first_is_human else "ai", "steps": []}
+        r = play_one_hand(human, ai, first_is_human, rng, record)
+        record["winner"] = "quit" if r is None else ("me" if r else "ai")
+        with open(game_log_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
         if r is None:
             break
         score["n"] += 1
