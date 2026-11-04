@@ -7,6 +7,9 @@
   喊过之后 1 不再百搭、也不能再喊 1。
 - 喊完 M个1 后普通点数照常 3 个起（同个数接也能接，1 视为最小点数）。
 - "M个1"被开时数实际摇出的 1 的个数。
+- 5 个数字全不相同（无对子）为无效手牌：2 人局重摇，摇到有效为止；
+  连续 3 次无效直接判负。非单挑局不重摇，该手牌算 0 个骰子
+  （0个1、0个2、……、0个6）。
 """
 from dataclasses import dataclass
 import math
@@ -23,6 +26,7 @@ class Rules:
     one_is_wild: bool = True
     one_bid_once: bool = True   # 喊过 1 不能再喊 1
     one_kills_wild: bool = True  # 喊过 1 后 1 不再百搭
+    strike_limit: int = 3       # 连续无效手牌次数上限（超过判负）
 
     @property
     def total_dice(self) -> int:
@@ -30,6 +34,11 @@ class Rules:
 
 
 DEFAULT_RULES = Rules()
+
+
+def is_valid_hand(dice) -> bool:
+    """有效手牌：5 个数字不能全不相同（至少一对）。"""
+    return len(set(dice)) < len(dice)
 
 
 def ceil_half(c: int) -> int:

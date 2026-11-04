@@ -16,8 +16,8 @@ import sys
 
 from agents import GreedyAgent, RandomAgent, ThresholdAgent
 from belief import p_true
-from engine import View, action_key, bucket_of, roll_hand
-from rules import DEFAULT_RULES, count_true, fmt_bid, legal_bids
+from engine import View, action_key, bucket_of
+from rules import DEFAULT_RULES, count_true, fmt_bid, is_valid_hand, legal_bids
 
 RULES = DEFAULT_RULES
 
@@ -51,7 +51,7 @@ def build_ai(level, params):
     if level == 3:
         p = params.get("vs_random", {"tau_call": 0.4, "tau_safe": 0.85, "style": "maxp"})
         return ThresholdAgent(p["tau_call"], p["tau_safe"], p["style"]), \
-            "困难：训练实战参数（对随机胜率 95.6% 的那个）"
+            "困难：训练实战参数"
     p = params.get("vs_rational", {"tau_call": 0.4, "tau_safe": 0.75, "style": "maxp"})
     return ThresholdAgent(p["tau_call"], p["tau_safe"], p["style"]), \
         "专家：自我对弈收敛的理论参数（近乎纳什）"
@@ -152,9 +152,38 @@ def show_dice(label, dice):
     print(f"{label}：{' '.join(str(d) for d in dice)}")
 
 
+def roll_with_display(hands, struck, idx, who, rng):
+    """摇一个人的骰子：全异重摇并提示，连续 3 次无效标记判负。"""
+    for k in range(1, RULES.strike_limit + 1):
+        d = tuple(rng.randint(1, 6) for _ in range(RULES.dice_per_player))
+        if is_valid_hand(d):
+            hands[idx] = d
+            struck[idx] = False
+            return
+        show_dice(f"{who}摇了 5 个数字全不一样（第 {k} 次无效）", d)
+    hands[idx] = d
+    struck[idx] = True
+
+
 def play_one_hand(human, ai, first_is_human, rng):
-    dice = roll_hand(RULES, rng)
     my_i, ai_i = (0, 1) if first_is_human else (1, 0)
+    while True:
+        hands, struck = [None, None], [False, False]
+        roll_with_display(hands, struck, my_i, "你", rng)
+        roll_with_display(hands, struck, ai_i, "对手", rng)
+        if all(struck):
+            print("双方都连续 3 次无效，重开一把。")
+            continue
+        break
+    if any(struck):
+        loser = struck.index(True)
+        winner_is_me = (loser == ai_i)
+        show_dice("你的骰子", hands[my_i])
+        show_dice("对手骰子", hands[ai_i])
+        print(f"{'对手' if loser == ai_i else '你'}连续 3 次无效 → "
+              f"{'你' if winner_is_me else '对手'}赢这一把")
+        return winner_is_me
+    dice = hands
     views = {my_i: human, ai_i: ai}
     show_dice("你的骰子", dice[my_i])
     print("对手的骰子已摇好（暗）。")

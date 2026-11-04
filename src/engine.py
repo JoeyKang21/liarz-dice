@@ -1,7 +1,7 @@
 """游戏引擎：发牌、叫牌流程、结算、局面分桶。"""
 from dataclasses import dataclass
 
-from rules import DEFAULT_RULES, Bid, Rules, legal_bids, count_true, fmt_bid
+from rules import DEFAULT_RULES, Bid, Rules, is_valid_hand, legal_bids, count_true, fmt_bid
 
 
 @dataclass(frozen=True)
@@ -15,8 +15,21 @@ class View:
 
 
 def roll_hand(rules: Rules, rng):
-    return [tuple(rng.randint(1, 6) for _ in range(rules.dice_per_player))
-            for _ in range(rules.n_players)]
+    """摇牌（2人局规则：全异重摇，连续 rules.strike_limit 次无效判负）。
+
+    返回 (hands, struck)：hands[i] 是玩家 i 最后一次摇的结果，
+    struck[i] 表示连续无效判负。
+    """
+    hands, struck = [], []
+    for _ in range(rules.n_players):
+        d = None
+        for _ in range(rules.strike_limit):
+            d = tuple(rng.randint(1, 6) for _ in range(rules.dice_per_player))
+            if is_valid_hand(d):
+                break
+        hands.append(d)
+        struck.append(not is_valid_hand(d))
+    return hands, struck
 
 
 def strength_bucket(my_dice) -> str:
@@ -65,8 +78,17 @@ def action_key(action) -> str:
 
 
 def play_hand(rules: Rules, agents, rng):
-    """跑一整把，返回 (赢家 index, trace)。agent0 先手叫牌。"""
-    dice = roll_hand(rules, rng)
+    """跑一整把，返回 (赢家 index, trace)。agent0 先手叫牌。
+
+    连续 3 次无效手牌直接判负（trace 为空）；双方都判负则重开一把。
+    """
+    while True:
+        dice, struck = roll_hand(rules, rng)
+        if not any(struck):
+            break
+        if all(struck):
+            continue
+        return 1 - struck.index(True), []  # 判负者输
     prev = None
     one_bid_made = False
     turn = 0

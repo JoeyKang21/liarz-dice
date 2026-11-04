@@ -1,18 +1,18 @@
 {
   "vs_random": {
     "tau_call": 0.4,
-    "tau_safe": 0.85,
-    "style": "maxp"
+    "tau_safe": 0.65,
+    "style": "mincount"
   },
   "vs_rational": {
-    "tau_call": 0.4,
-    "tau_safe": 0.75,
+    "tau_call": 0.3,
+    "tau_safe": 0.55,
     "style": "maxp"
   },
   "vs_rational_opponent": {
-    "tau_call": 0.4,
-    "tau_safe": 0.75,
+    "tau_call": 0.3,
+    "tau_safe": 0.55,
     "style": "maxp"
   },
-  "final_vs_random_winrate": 0.9577
+  "final_vs_random_winrate": 0.9523
 }
