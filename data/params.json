@@ -1,7 +1,7 @@
 {
   "vs_random": {
     "tau_call": 0.4,
-    "tau_safe": 0.65,
+    "tau_safe": 0.75,
     "style": "mincount"
   },
   "vs_rational": {
@@ -14,5 +14,5 @@
     "tau_safe": 0.55,
     "style": "maxp"
   },
-  "final_vs_random_winrate": 0.9523
+  "final_vs_random_winrate": 0.9573
 }

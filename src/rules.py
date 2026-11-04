@@ -3,8 +3,9 @@
 规则定稿（2 人各 5 骰，每把独立计分）：
 - 普通点数（2-6）3 个起喊（人数+1）；点数 1 是 2 个起喊（人数）。
 - 加叫：同个数更高点数，或更高个数任意点数（数量升点数可降）。
-- 喊 1 是"重置"：个数至少 ceil(上家个数/2)，每把只能喊一次；
-  喊过之后 1 不再百搭、也不能再喊 1。
+- 喊 1：第一次喊 1 是"重置"，个数至少 ceil(上家个数/2)（可比上家个数少）；
+  喊过 1 之后 1 不再百搭、不能再重置，但 1 变成普通点数——
+  可以正常加叫更多个 1（猜 1 的个数），同个数也能升到其它点数。
 - 喊完 M个1 后普通点数照常 3 个起（同个数接也能接，1 视为最小点数）。
 - "M个1"被开时数实际摇出的 1 的个数。
 - 5 个数字全不相同（无对子）为无效手牌：2 人局重摇，摇到有效为止；
@@ -24,8 +25,7 @@ class Rules:
     min_normal_count: int = 3   # 人数 + 1
     min_one_count: int = 2      # 人数
     one_is_wild: bool = True
-    one_bid_once: bool = True   # 喊过 1 不能再喊 1
-    one_kills_wild: bool = True  # 喊过 1 后 1 不再百搭
+    one_reset_once: bool = True   # "减半重置"只能用一次（第一次喊 1 时）
     strike_limit: int = 3       # 连续无效手牌次数上限（超过判负）
 
     @property
@@ -70,9 +70,12 @@ def legal_bids(rules: Rules, prev: Bid, one_bid_made: bool) -> list:
             start = max(rules.min_normal_count, c1 + 1)
         out.extend((c, f) for c in range(start, max_c + 1))
     if not one_bid_made:
-        # 喊 1：至少 ceil(上家个数/2)，也至少 2 个（人数）。
+        # 第一次喊 1 = 重置：至少 ceil(上家个数/2)，也至少 2 个（人数）。
         start = max(rules.min_one_count, ceil_half(c1))
-        out.extend((c, 1) for c in range(start, max_c + 1))
+    else:
+        # 1 已被喊过：不能重置，1 当普通点数正常加叫（更多个 1）。
+        start = max(rules.min_one_count, c1 + 1)
+    out.extend((c, 1) for c in range(start, max_c + 1))
     return out
 
 
@@ -92,10 +95,8 @@ def count_true(rules: Rules, all_dice: list, bid: Bid, one_bid_made: bool) -> bo
         n = sum(1 for d in all_dice if d == 1)
     else:
         n = sum(1 for d in all_dice if d == f)
-        if rules.one_is_wild and rules.one_kills_wild and one_bid_made:
-            pass  # 斋期：1 不百搭
-        elif rules.one_is_wild:
-            n += sum(1 for d in all_dice if d == 1)
+        if rules.one_is_wild and not one_bid_made:
+            n += sum(1 for d in all_dice if d == 1)  # 百搭期：1 算任何点数
     return n >= c
 
 
