@@ -12,6 +12,23 @@ from rules import DEFAULT_RULES, fmt_bid, legal_bids
 
 RULES = DEFAULT_RULES
 
+# 局面记号 -> 明文
+LABELS = {
+    "s<=1": "牌很弱(最强不到2个)",
+    "s=2": "牌弱(最强2个)",
+    "s=3": "牌中(最强3个)",
+    "s>=4": "牌强(最强4个以上)",
+    "g<=0": "自己就够数",
+    "g=1": "差1个",
+    "g=2": "差2个",
+    "g>=3": "差3个以上",
+}
+
+
+def pretty(key: str) -> str:
+    head, _, tag = key.partition("|")
+    return f"{head}·{LABELS.get(tag, tag)}"
+
 
 def load_latest():
     files = sorted(glob.glob("logs/games_*.jsonl"))
@@ -78,13 +95,13 @@ def main():
               f"= {bluffs[0] / bluffs[1] * 100:.0f}%（虚张声势比例）")
 
     if buckets:
-        print("\n你的局面胜率：")
+        print("\n你的局面胜率（你每次出手时的局面 → 这把最终胜率）：")
         for key, d in sorted(buckets.items(), key=lambda kv: kv[1]["win"] / kv[1]["n"]):
-            print(f"  {key:24s} {d['win'] / d['n'] * 100:3.0f}%  ({d['win']}/{d['n']})")
+            print(f"  {pretty(key):28s} {d['win'] / d['n'] * 100:3.0f}%  ({d['win']}/{d['n']})")
     if lose_buckets:
-        print("\n你输掉的把，最后一次决策所在局面：")
+        print("\n你输掉的把，最后一次出手时的局面：")
         for key, n in sorted(lose_buckets.items(), key=lambda kv: -kv[1]):
-            print(f"  {key:24s} {n} 把")
+            print(f"  {pretty(key):28s} {n} 把")
 
     by_diff = {}
     for h in done:
