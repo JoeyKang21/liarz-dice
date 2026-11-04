@@ -1,0 +1,145 @@
+2026-11-04 15:30:30,310 === 开始训练：2人5骰，1百搭，喊1重置规则 ===
+2026-11-04 15:30:30,310 网格: tau_call=[0.3, 0.4, 0.5, 0.6] tau_safe=[0.55, 0.65, 0.75, 0.85] style=['maxp', 'mincount']
+2026-11-04 15:30:30,310 --- 阶段1：网格搜索 vs 随机对手 (1200 手/配置/座位) ---
+2026-11-04 15:30:30,353 [vs随机] tau_call=0.30 tau_safe=0.55 style=maxp     -> 胜率 0.948
+2026-11-04 15:30:30,388 [vs随机] tau_call=0.30 tau_safe=0.55 style=mincount -> 胜率 0.931
+2026-11-04 15:30:30,423 [vs随机] tau_call=0.30 tau_safe=0.65 style=maxp     -> 胜率 0.953
+2026-11-04 15:30:30,460 [vs随机] tau_call=0.30 tau_safe=0.65 style=mincount -> 胜率 0.942
+2026-11-04 15:30:30,497 [vs随机] tau_call=0.30 tau_safe=0.75 style=maxp     -> 胜率 0.953
+2026-11-04 15:30:30,539 [vs随机] tau_call=0.30 tau_safe=0.75 style=mincount -> 胜率 0.945
+2026-11-04 15:30:30,574 [vs随机] tau_call=0.30 tau_safe=0.85 style=maxp     -> 胜率 0.948
+2026-11-04 15:30:30,611 [vs随机] tau_call=0.30 tau_safe=0.85 style=mincount -> 胜率 0.942
+2026-11-04 15:30:30,647 [vs随机] tau_call=0.40 tau_safe=0.55 style=maxp     -> 胜率 0.948
+2026-11-04 15:30:30,682 [vs随机] tau_call=0.40 tau_safe=0.55 style=mincount -> 胜率 0.932
+2026-11-04 15:30:30,723 [vs随机] tau_call=0.40 tau_safe=0.65 style=maxp     -> 胜率 0.956
+2026-11-04 15:30:30,760 [vs随机] tau_call=0.40 tau_safe=0.65 style=mincount -> 胜率 0.944
+2026-11-04 15:30:30,799 [vs随机] tau_call=0.40 tau_safe=0.75 style=maxp     -> 胜率 0.943
+2026-11-04 15:30:30,834 [vs随机] tau_call=0.40 tau_safe=0.75 style=mincount -> 胜率 0.953
+2026-11-04 15:30:30,870 [vs随机] tau_call=0.40 tau_safe=0.85 style=maxp     -> 胜率 0.960
+2026-11-04 15:30:30,905 [vs随机] tau_call=0.40 tau_safe=0.85 style=mincount -> 胜率 0.943
+2026-11-04 15:30:30,941 [vs随机] tau_call=0.50 tau_safe=0.55 style=maxp     -> 胜率 0.940
+2026-11-04 15:30:30,982 [vs随机] tau_call=0.50 tau_safe=0.55 style=mincount -> 胜率 0.929
+2026-11-04 15:30:31,020 [vs随机] tau_call=0.50 tau_safe=0.65 style=maxp     -> 胜率 0.956
+2026-11-04 15:30:31,057 [vs随机] tau_call=0.50 tau_safe=0.65 style=mincount -> 胜率 0.958
+2026-11-04 15:30:31,092 [vs随机] tau_call=0.50 tau_safe=0.75 style=maxp     -> 胜率 0.943
+2026-11-04 15:30:31,130 [vs随机] tau_call=0.50 tau_safe=0.75 style=mincount -> 胜率 0.956
+2026-11-04 15:30:31,169 [vs随机] tau_call=0.50 tau_safe=0.85 style=maxp     -> 胜率 0.953
+2026-11-04 15:30:31,205 [vs随机] tau_call=0.50 tau_safe=0.85 style=mincount -> 胜率 0.948
+2026-11-04 15:30:31,239 [vs随机] tau_call=0.60 tau_safe=0.55 style=maxp     -> 胜率 0.914
+2026-11-04 15:30:31,274 [vs随机] tau_call=0.60 tau_safe=0.55 style=mincount -> 胜率 0.906
+2026-11-04 15:30:31,307 [vs随机] tau_call=0.60 tau_safe=0.65 style=maxp     -> 胜率 0.902
+2026-11-04 15:30:31,342 [vs随机] tau_call=0.60 tau_safe=0.65 style=mincount -> 胜率 0.926
+2026-11-04 15:30:31,376 [vs随机] tau_call=0.60 tau_safe=0.75 style=maxp     -> 胜率 0.914
+2026-11-04 15:30:31,412 [vs随机] tau_call=0.60 tau_safe=0.75 style=mincount -> 胜率 0.916
+2026-11-04 15:30:31,448 [vs随机] tau_call=0.60 tau_safe=0.85 style=maxp     -> 胜率 0.922
+2026-11-04 15:30:31,480 [vs随机] tau_call=0.60 tau_safe=0.85 style=mincount -> 胜率 0.907
+2026-11-04 15:30:31,480 [vs随机] 网格最优: {'tau_call': 0.4, 'tau_safe': 0.85, 'style': 'maxp'}  胜率 0.960  (耗时 1.2s)
+2026-11-04 15:30:31,480 --- 阶段2：自我对弈 3 轮迭代最优反应 ---
+2026-11-04 15:30:31,480 初始理性对手 P0: {'tau_call': 0.45, 'tau_safe': 0.75, 'style': 'maxp'}
+2026-11-04 15:30:31,480 --- 第 1 轮：对 P0 网格搜索最优反应 ---
+2026-11-04 15:30:31,541 [FP1] tau_call=0.30 tau_safe=0.55 style=maxp     -> 胜率 0.504
+2026-11-04 15:30:31,590 [FP1] tau_call=0.30 tau_safe=0.55 style=mincount -> 胜率 0.376
+2026-11-04 15:30:31,651 [FP1] tau_call=0.30 tau_safe=0.65 style=maxp     -> 胜率 0.506
+2026-11-04 15:30:31,709 [FP1] tau_call=0.30 tau_safe=0.65 style=mincount -> 胜率 0.448
+2026-11-04 15:30:31,772 [FP1] tau_call=0.30 tau_safe=0.75 style=maxp     -> 胜率 0.497
+2026-11-04 15:30:31,834 [FP1] tau_call=0.30 tau_safe=0.75 style=mincount -> 胜率 0.454
+2026-11-04 15:30:31,891 [FP1] tau_call=0.30 tau_safe=0.85 style=maxp     -> 胜率 0.485
+2026-11-04 15:30:31,948 [FP1] tau_call=0.30 tau_safe=0.85 style=mincount -> 胜率 0.497
+2026-11-04 15:30:32,009 [FP1] tau_call=0.40 tau_safe=0.55 style=maxp     -> 胜率 0.496
+2026-11-04 15:30:32,062 [FP1] tau_call=0.40 tau_safe=0.55 style=mincount -> 胜率 0.378
+2026-11-04 15:30:32,120 [FP1] tau_call=0.40 tau_safe=0.65 style=maxp     -> 胜率 0.481
+2026-11-04 15:30:32,178 [FP1] tau_call=0.40 tau_safe=0.65 style=mincount -> 胜率 0.482
+2026-11-04 15:30:32,236 [FP1] tau_call=0.40 tau_safe=0.75 style=maxp     -> 胜率 0.526
+2026-11-04 15:30:32,294 [FP1] tau_call=0.40 tau_safe=0.75 style=mincount -> 胜率 0.487
+2026-11-04 15:30:32,351 [FP1] tau_call=0.40 tau_safe=0.85 style=maxp     -> 胜率 0.504
+2026-11-04 15:30:32,407 [FP1] tau_call=0.40 tau_safe=0.85 style=mincount -> 胜率 0.479
+2026-11-04 15:30:32,479 [FP1] tau_call=0.50 tau_safe=0.55 style=maxp     -> 胜率 0.520
+2026-11-04 15:30:32,526 [FP1] tau_call=0.50 tau_safe=0.55 style=mincount -> 胜率 0.409
+2026-11-04 15:30:32,589 [FP1] tau_call=0.50 tau_safe=0.65 style=maxp     -> 胜率 0.514
+2026-11-04 15:30:32,651 [FP1] tau_call=0.50 tau_safe=0.65 style=mincount -> 胜率 0.495
+2026-11-04 15:30:32,712 [FP1] tau_call=0.50 tau_safe=0.75 style=maxp     -> 胜率 0.507
+2026-11-04 15:30:32,769 [FP1] tau_call=0.50 tau_safe=0.75 style=mincount -> 胜率 0.461
+2026-11-04 15:30:32,825 [FP1] tau_call=0.50 tau_safe=0.85 style=maxp     -> 胜率 0.484
+2026-11-04 15:30:32,880 [FP1] tau_call=0.50 tau_safe=0.85 style=mincount -> 胜率 0.448
+2026-11-04 15:30:32,924 [FP1] tau_call=0.60 tau_safe=0.55 style=maxp     -> 胜率 0.304
+2026-11-04 15:30:32,964 [FP1] tau_call=0.60 tau_safe=0.55 style=mincount -> 胜率 0.305
+2026-11-04 15:30:33,007 [FP1] tau_call=0.60 tau_safe=0.65 style=maxp     -> 胜率 0.292
+2026-11-04 15:30:33,051 [FP1] tau_call=0.60 tau_safe=0.65 style=mincount -> 胜率 0.326
+2026-11-04 15:30:33,100 [FP1] tau_call=0.60 tau_safe=0.75 style=maxp     -> 胜率 0.310
+2026-11-04 15:30:33,145 [FP1] tau_call=0.60 tau_safe=0.75 style=mincount -> 胜率 0.312
+2026-11-04 15:30:33,190 [FP1] tau_call=0.60 tau_safe=0.85 style=maxp     -> 胜率 0.324
+2026-11-04 15:30:33,236 [FP1] tau_call=0.60 tau_safe=0.85 style=mincount -> 胜率 0.346
+2026-11-04 15:30:33,237 [FP1] 网格最优: {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'}  胜率 0.526  (耗时 1.8s)
+2026-11-04 15:30:33,376 P1 {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'} vs P0 {'tau_call': 0.45, 'tau_safe': 0.75, 'style': 'maxp'} -> P1 胜率 0.501
+2026-11-04 15:30:33,376 --- 第 2 轮：对 P1 网格搜索最优反应 ---
+2026-11-04 15:30:33,434 [FP2] tau_call=0.30 tau_safe=0.55 style=maxp     -> 胜率 0.504
+2026-11-04 15:30:33,481 [FP2] tau_call=0.30 tau_safe=0.55 style=mincount -> 胜率 0.376
+2026-11-04 15:30:33,542 [FP2] tau_call=0.30 tau_safe=0.65 style=maxp     -> 胜率 0.506
+2026-11-04 15:30:33,603 [FP2] tau_call=0.30 tau_safe=0.65 style=mincount -> 胜率 0.448
+2026-11-04 15:30:33,663 [FP2] tau_call=0.30 tau_safe=0.75 style=maxp     -> 胜率 0.497
+2026-11-04 15:30:33,721 [FP2] tau_call=0.30 tau_safe=0.75 style=mincount -> 胜率 0.454
+2026-11-04 15:30:33,776 [FP2] tau_call=0.30 tau_safe=0.85 style=maxp     -> 胜率 0.485
+2026-11-04 15:30:33,833 [FP2] tau_call=0.30 tau_safe=0.85 style=mincount -> 胜率 0.497
+2026-11-04 15:30:33,891 [FP2] tau_call=0.40 tau_safe=0.55 style=maxp     -> 胜率 0.496
+2026-11-04 15:30:33,938 [FP2] tau_call=0.40 tau_safe=0.55 style=mincount -> 胜率 0.378
+2026-11-04 15:30:33,995 [FP2] tau_call=0.40 tau_safe=0.65 style=maxp     -> 胜率 0.481
+2026-11-04 15:30:34,051 [FP2] tau_call=0.40 tau_safe=0.65 style=mincount -> 胜率 0.482
+2026-11-04 15:30:34,108 [FP2] tau_call=0.40 tau_safe=0.75 style=maxp     -> 胜率 0.526
+2026-11-04 15:30:34,170 [FP2] tau_call=0.40 tau_safe=0.75 style=mincount -> 胜率 0.487
+2026-11-04 15:30:34,225 [FP2] tau_call=0.40 tau_safe=0.85 style=maxp     -> 胜率 0.504
+2026-11-04 15:30:34,283 [FP2] tau_call=0.40 tau_safe=0.85 style=mincount -> 胜率 0.479
+2026-11-04 15:30:34,341 [FP2] tau_call=0.50 tau_safe=0.55 style=maxp     -> 胜率 0.520
+2026-11-04 15:30:34,389 [FP2] tau_call=0.50 tau_safe=0.55 style=mincount -> 胜率 0.409
+2026-11-04 15:30:34,449 [FP2] tau_call=0.50 tau_safe=0.65 style=maxp     -> 胜率 0.514
+2026-11-04 15:30:34,507 [FP2] tau_call=0.50 tau_safe=0.65 style=mincount -> 胜率 0.495
+2026-11-04 15:30:34,574 [FP2] tau_call=0.50 tau_safe=0.75 style=maxp     -> 胜率 0.507
+2026-11-04 15:30:34,632 [FP2] tau_call=0.50 tau_safe=0.75 style=mincount -> 胜率 0.461
+2026-11-04 15:30:34,693 [FP2] tau_call=0.50 tau_safe=0.85 style=maxp     -> 胜率 0.484
+2026-11-04 15:30:34,747 [FP2] tau_call=0.50 tau_safe=0.85 style=mincount -> 胜率 0.448
+2026-11-04 15:30:34,794 [FP2] tau_call=0.60 tau_safe=0.55 style=maxp     -> 胜率 0.304
+2026-11-04 15:30:34,838 [FP2] tau_call=0.60 tau_safe=0.55 style=mincount -> 胜率 0.305
+2026-11-04 15:30:34,886 [FP2] tau_call=0.60 tau_safe=0.65 style=maxp     -> 胜率 0.292
+2026-11-04 15:30:34,935 [FP2] tau_call=0.60 tau_safe=0.65 style=mincount -> 胜率 0.326
+2026-11-04 15:30:34,978 [FP2] tau_call=0.60 tau_safe=0.75 style=maxp     -> 胜率 0.310
+2026-11-04 15:30:35,024 [FP2] tau_call=0.60 tau_safe=0.75 style=mincount -> 胜率 0.312
+2026-11-04 15:30:35,070 [FP2] tau_call=0.60 tau_safe=0.85 style=maxp     -> 胜率 0.324
+2026-11-04 15:30:35,114 [FP2] tau_call=0.60 tau_safe=0.85 style=mincount -> 胜率 0.346
+2026-11-04 15:30:35,114 [FP2] 网格最优: {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'}  胜率 0.526  (耗时 1.7s)
+2026-11-04 15:30:35,264 P2 {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'} vs P1 {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'} -> P2 胜率 0.489
+2026-11-04 15:30:35,264 --- 第 3 轮：对 P2 网格搜索最优反应 ---
+2026-11-04 15:30:35,329 [FP3] tau_call=0.30 tau_safe=0.55 style=maxp     -> 胜率 0.504
+2026-11-04 15:30:35,378 [FP3] tau_call=0.30 tau_safe=0.55 style=mincount -> 胜率 0.376
+2026-11-04 15:30:35,439 [FP3] tau_call=0.30 tau_safe=0.65 style=maxp     -> 胜率 0.506
+2026-11-04 15:30:35,498 [FP3] tau_call=0.30 tau_safe=0.65 style=mincount -> 胜率 0.448
+2026-11-04 15:30:35,561 [FP3] tau_call=0.30 tau_safe=0.75 style=maxp     -> 胜率 0.497
+2026-11-04 15:30:35,623 [FP3] tau_call=0.30 tau_safe=0.75 style=mincount -> 胜率 0.454
+2026-11-04 15:30:35,681 [FP3] tau_call=0.30 tau_safe=0.85 style=maxp     -> 胜率 0.485
+2026-11-04 15:30:35,742 [FP3] tau_call=0.30 tau_safe=0.85 style=mincount -> 胜率 0.497
+2026-11-04 15:30:35,807 [FP3] tau_call=0.40 tau_safe=0.55 style=maxp     -> 胜率 0.496
+2026-11-04 15:30:35,854 [FP3] tau_call=0.40 tau_safe=0.55 style=mincount -> 胜率 0.378
+2026-11-04 15:30:35,909 [FP3] tau_call=0.40 tau_safe=0.65 style=maxp     -> 胜率 0.481
+2026-11-04 15:30:35,967 [FP3] tau_call=0.40 tau_safe=0.65 style=mincount -> 胜率 0.482
+2026-11-04 15:30:36,026 [FP3] tau_call=0.40 tau_safe=0.75 style=maxp     -> 胜率 0.526
+2026-11-04 15:30:36,089 [FP3] tau_call=0.40 tau_safe=0.75 style=mincount -> 胜率 0.487
+2026-11-04 15:30:36,148 [FP3] tau_call=0.40 tau_safe=0.85 style=maxp     -> 胜率 0.504
+2026-11-04 15:30:36,205 [FP3] tau_call=0.40 tau_safe=0.85 style=mincount -> 胜率 0.479
+2026-11-04 15:30:36,266 [FP3] tau_call=0.50 tau_safe=0.55 style=maxp     -> 胜率 0.520
+2026-11-04 15:30:36,313 [FP3] tau_call=0.50 tau_safe=0.55 style=mincount -> 胜率 0.409
+2026-11-04 15:30:36,377 [FP3] tau_call=0.50 tau_safe=0.65 style=maxp     -> 胜率 0.514
+2026-11-04 15:30:36,442 [FP3] tau_call=0.50 tau_safe=0.65 style=mincount -> 胜率 0.495
+2026-11-04 15:30:36,504 [FP3] tau_call=0.50 tau_safe=0.75 style=maxp     -> 胜率 0.507
+2026-11-04 15:30:36,562 [FP3] tau_call=0.50 tau_safe=0.75 style=mincount -> 胜率 0.461
+2026-11-04 15:30:36,623 [FP3] tau_call=0.50 tau_safe=0.85 style=maxp     -> 胜率 0.484
+2026-11-04 15:30:36,678 [FP3] tau_call=0.50 tau_safe=0.85 style=mincount -> 胜率 0.448
+2026-11-04 15:30:36,723 [FP3] tau_call=0.60 tau_safe=0.55 style=maxp     -> 胜率 0.304
+2026-11-04 15:30:36,769 [FP3] tau_call=0.60 tau_safe=0.55 style=mincount -> 胜率 0.305
+2026-11-04 15:30:36,815 [FP3] tau_call=0.60 tau_safe=0.65 style=maxp     -> 胜率 0.292
+2026-11-04 15:30:36,860 [FP3] tau_call=0.60 tau_safe=0.65 style=mincount -> 胜率 0.326
+2026-11-04 15:30:36,906 [FP3] tau_call=0.60 tau_safe=0.75 style=maxp     -> 胜率 0.310
+2026-11-04 15:30:36,963 [FP3] tau_call=0.60 tau_safe=0.75 style=mincount -> 胜率 0.312
+2026-11-04 15:30:37,015 [FP3] tau_call=0.60 tau_safe=0.85 style=maxp     -> 胜率 0.324
+2026-11-04 15:30:37,057 [FP3] tau_call=0.60 tau_safe=0.85 style=mincount -> 胜率 0.346
+2026-11-04 15:30:37,058 [FP3] 网格最优: {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'}  胜率 0.526  (耗时 1.8s)
+2026-11-04 15:30:37,206 P3 {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'} vs P2 {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'} -> P3 胜率 0.497
+2026-11-04 15:30:37,335 最终理性策略 {'tau_call': 0.4, 'tau_safe': 0.75, 'style': 'maxp'}：对随机对手胜率 0.958 (4000手)
+2026-11-04 15:30:37,352 训练完成，参数已写入 data/params.json

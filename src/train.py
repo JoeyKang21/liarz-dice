@@ -2,8 +2,8 @@
 
 产出：
 - logs/train_<时间戳>.log   训练全程记录
-- out/params.json           最优参数（对随机 / 对理性）
-- out/grid_results.json     每轮网格搜索完整得分
+- data/params.json           最优参数（对随机 / 对理性）
+- data/grid_results.json     每轮网格搜索完整得分
 """
 import itertools
 import json
@@ -62,7 +62,7 @@ def grid_search(opponent_factory, hands, tag):
 
 def main():
     os.makedirs("logs", exist_ok=True)
-    os.makedirs("out", exist_ok=True)
+    os.makedirs("data", exist_ok=True)
     ts = time.strftime("%Y%m%d_%H%M%S")
     logging.basicConfig(
         level=logging.INFO,
@@ -112,12 +112,12 @@ def main():
         "vs_rational_opponent": fp_history[-1]["incumbent"],  # 最终策略训练时面对的理性对手
         "final_vs_random_winrate": round(final_vs_rand, 4),
     }
-    with open("out/params.json", "w", encoding="utf-8") as f:
+    with open("data/params.json", "w", encoding="utf-8") as f:
         json.dump(params, f, ensure_ascii=False, indent=2)
-    with open("out/grid_results.json", "w", encoding="utf-8") as f:
+    with open("data/grid_results.json", "w", encoding="utf-8") as f:
         json.dump({"vs_random": res_rand, "fictitious_play": fp_history}, f,
                   ensure_ascii=False, indent=2)
-    log.info("训练完成，参数已写入 out/params.json")
+    log.info("训练完成，参数已写入 data/params.json")
 
 
 if __name__ == "__main__":

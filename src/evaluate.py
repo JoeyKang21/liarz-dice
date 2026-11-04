@@ -1,6 +1,6 @@
 """评估：大规模蒙特卡洛对局，统计胜率（含置信区间）与分桶胜率。
 
-产出 out/stats_<对手>.json，供 make_card.py 生成策略卡片。
+产出 data/stats_<对手>.json，供 make_card.py 生成策略卡片。
 """
 import json
 import logging
@@ -70,8 +70,8 @@ def serialize(buckets):
 
 def main():
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
-    os.makedirs("out", exist_ok=True)
-    with open("out/params.json", encoding="utf-8") as f:
+    os.makedirs("data", exist_ok=True)
+    with open("data/params.json", encoding="utf-8") as f:
         params = json.load(f)
 
     policy_rand = ThresholdAgent(**params["vs_random"])
@@ -98,9 +98,9 @@ def main():
             "win_rate": round(p, 4), "ci": [round(lo, 4), round(hi, 4)],
             "buckets": serialize(buckets),
         }
-    with open("out/stats.json", "w", encoding="utf-8") as f:
+    with open("data/stats.json", "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
-    logging.info("评估完成，写入 out/stats.json")
+    logging.info("评估完成，写入 data/stats.json")
 
 
 if __name__ == "__main__":

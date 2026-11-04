@@ -23,7 +23,7 @@ ORDER_FOLLOW = ["g<=0", "g=1", "g=2", "g>=3"]
 
 
 def load(name):
-    with open(f"out/{name}", encoding="utf-8") as f:
+    with open(f"data/{name}", encoding="utf-8") as f:
         return json.load(f)
 
 
