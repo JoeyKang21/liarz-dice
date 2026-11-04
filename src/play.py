@@ -21,7 +21,6 @@ from engine import View, action_key, bucket_of
 from rules import DEFAULT_RULES, count_true, fmt_bid, is_valid_hand, legal_bids
 
 RULES = DEFAULT_RULES
-DICE = {1: "⚀", 2: "⚁", 3: "⚂", 4: "⚃", 5: "⚄", 6: "⚅"}
 RULE_LINE = "─" * 46
 
 
@@ -70,7 +69,7 @@ def yellow(s):
 def fmt_dice(dice, hidden=False):
     if hidden:
         return " ".join("●" for _ in dice)
-    return " ".join(DICE[d] for d in dice)
+    return " ".join(str(d) for d in dice)
 
 
 def load_params():
