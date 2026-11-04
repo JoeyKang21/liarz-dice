@@ -1,0 +1,354 @@
+{
+  "vs_random": [
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.85,
+      "style": "maxp",
+      "win_rate": 0.96
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.65,
+      "style": "mincount",
+      "win_rate": 0.9575
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.65,
+      "style": "maxp",
+      "win_rate": 0.9558
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.65,
+      "style": "maxp",
+      "win_rate": 0.9558
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.75,
+      "style": "mincount",
+      "win_rate": 0.9558
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.75,
+      "style": "mincount",
+      "win_rate": 0.9533
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.65,
+      "style": "maxp",
+      "win_rate": 0.9525
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.75,
+      "style": "maxp",
+      "win_rate": 0.9525
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.85,
+      "style": "maxp",
+      "win_rate": 0.9525
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.55,
+      "style": "maxp",
+      "win_rate": 0.9483
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.85,
+      "style": "mincount",
+      "win_rate": 0.9483
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.85,
+      "style": "maxp",
+      "win_rate": 0.9475
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.55,
+      "style": "maxp",
+      "win_rate": 0.9475
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.75,
+      "style": "mincount",
+      "win_rate": 0.945
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.65,
+      "style": "mincount",
+      "win_rate": 0.9442
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.75,
+      "style": "maxp",
+      "win_rate": 0.9433
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.85,
+      "style": "mincount",
+      "win_rate": 0.9425
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.75,
+      "style": "maxp",
+      "win_rate": 0.9425
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.65,
+      "style": "mincount",
+      "win_rate": 0.9417
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.85,
+      "style": "mincount",
+      "win_rate": 0.9417
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.55,
+      "style": "maxp",
+      "win_rate": 0.94
+    },
+    {
+      "tau_call": 0.4,
+      "tau_safe": 0.55,
+      "style": "mincount",
+      "win_rate": 0.9317
+    },
+    {
+      "tau_call": 0.3,
+      "tau_safe": 0.55,
+      "style": "mincount",
+      "win_rate": 0.9308
+    },
+    {
+      "tau_call": 0.5,
+      "tau_safe": 0.55,
+      "style": "mincount",
+      "win_rate": 0.9292
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.65,
+      "style": "mincount",
+      "win_rate": 0.9258
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.85,
+      "style": "maxp",
+      "win_rate": 0.9217
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.75,
+      "style": "mincount",
+      "win_rate": 0.9158
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.55,
+      "style": "maxp",
+      "win_rate": 0.9142
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.75,
+      "style": "maxp",
+      "win_rate": 0.9142
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.85,
+      "style": "mincount",
+      "win_rate": 0.9075
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.55,
+      "style": "mincount",
+      "win_rate": 0.9058
+    },
+    {
+      "tau_call": 0.6,
+      "tau_safe": 0.65,
+      "style": "maxp",
+      "win_rate": 0.9025
+    }
+  ],
+  "fictitious_play": [
+    {
+      "round": 1,
+      "challenger": {
+        "tau_call": 0.4,
+        "tau_safe": 0.75,
+        "style": "maxp"
+      },
+      "incumbent": {
+        "tau_call": 0.45,
+        "tau_safe": 0.75,
+        "style": "maxp"
+      },
+      "challenger_win_rate": 0.5015,
+      "grid_top": [
+        {
+          "tau_call": 0.4,
+          "tau_safe": 0.75,
+          "style": "maxp",
+          "win_rate": 0.5262
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.55,
+          "style": "maxp",
+          "win_rate": 0.52
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.65,
+          "style": "maxp",
+          "win_rate": 0.5138
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.75,
+          "style": "maxp",
+          "win_rate": 0.5075
+        },
+        {
+          "tau_call": 0.3,
+          "tau_safe": 0.65,
+          "style": "maxp",
+          "win_rate": 0.5062
+        },
+        {
+          "tau_call": 0.3,
+          "tau_safe": 0.55,
+          "style": "maxp",
+          "win_rate": 0.5038
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "challenger": {
+        "tau_call": 0.4,
+        "tau_safe": 0.75,
+        "style": "maxp"
+      },
+      "incumbent": {
+        "tau_call": 0.4,
+        "tau_safe": 0.75,
+        "style": "maxp"
+      },
+      "challenger_win_rate": 0.4895,
+      "grid_top": [
+        {
+          "tau_call": 0.4,
+          "tau_safe": 0.75,
+          "style": "maxp",
+          "win_rate": 0.5262
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.55,
+          "style": "maxp",
+          "win_rate": 0.52
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.65,
+          "style": "maxp",
+          "win_rate": 0.5138
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.75,
+          "style": "maxp",
+          "win_rate": 0.5075
+        },
+        {
+          "tau_call": 0.3,
+          "tau_safe": 0.65,
+          "style": "maxp",
+          "win_rate": 0.5062
+        },
+        {
+          "tau_call": 0.3,
+          "tau_safe": 0.55,
+          "style": "maxp",
+          "win_rate": 0.5038
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "challenger": {
+        "tau_call": 0.4,
+        "tau_safe": 0.75,
+        "style": "maxp"
+      },
+      "incumbent": {
+        "tau_call": 0.4,
+        "tau_safe": 0.75,
+        "style": "maxp"
+      },
+      "challenger_win_rate": 0.4975,
+      "grid_top": [
+        {
+          "tau_call": 0.4,
+          "tau_safe": 0.75,
+          "style": "maxp",
+          "win_rate": 0.5262
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.55,
+          "style": "maxp",
+          "win_rate": 0.52
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.65,
+          "style": "maxp",
+          "win_rate": 0.5138
+        },
+        {
+          "tau_call": 0.5,
+          "tau_safe": 0.75,
+          "style": "maxp",
+          "win_rate": 0.5075
+        },
+        {
+          "tau_call": 0.3,
+          "tau_safe": 0.65,
+          "style": "maxp",
+          "win_rate": 0.5062
+        },
+        {
+          "tau_call": 0.3,
+          "tau_safe": 0.55,
+          "style": "maxp",
+          "win_rate": 0.5038
+        }
+      ]
+    }
+  ]
+}
