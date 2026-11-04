@@ -14,6 +14,7 @@
 ## 用法
 
 ```bash
+python src/play.py        # 人机对战（4 档难度，输入 ? 可开提示）
 python src/train.py       # 网格搜索 + 自我对弈调参（日志写入 logs/）
 python src/evaluate.py    # 3 万手蒙特卡洛评估（结果写入 data/stats.json）
 python src/make_card.py   # 生成 report/strategy_card.md 与 training_report.md
@@ -30,6 +31,7 @@ python src/make_card.py   # 生成 report/strategy_card.md 与 training_report.m
 | `src/train.py` | 训练：网格搜索 + 迭代最优反应自我对弈 |
 | `src/evaluate.py` | 蒙特卡洛评估（胜率 + Wilson CI + 分桶统计） |
 | `src/make_card.py` | 生成训练报告与策略卡片 |
+| `src/play.py` | 人机对战模拟器（简单/中等/困难/专家 4 档） |
 | `data/` | 训练/评估中间产物（params、grid、stats JSON） |
 | `logs/` | 训练全程日志 |
 | `report/` | 策略卡片与训练报告 |
